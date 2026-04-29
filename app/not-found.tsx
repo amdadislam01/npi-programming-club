@@ -44,7 +44,7 @@ export default function NotFound() {
           className="max-w-lg mx-auto"
         >
           <p className="text-lg md:text-xl text-neutral-dark/60 mb-12">
-            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let's get you back on track.
+            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let&apos;s get you back on track.
           </p>
 
           {/* Action Buttons */}
