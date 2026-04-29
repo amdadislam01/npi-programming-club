@@ -1,0 +1,29 @@
+.exploreHero {
+  background: radial-gradient(circle at 20% 30%, rgba(41, 99, 116, 0.1), transparent),
+              radial-gradient(circle at 80% 70%, rgba(12, 44, 85, 0.05), transparent);
+  position: relative;
+}
+
+.categoryCard {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.categoryCard:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px -12px rgba(12, 44, 85, 0.15);
+}
+
+.floatingIcon {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.glassInput {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
