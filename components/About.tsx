@@ -102,7 +102,7 @@ const About = () => {
               viewport={{ once: true }}
             >
               <motion.p variants={itemVariants} className="text-[18px] text-[#2C3E50] leading-[1.8] mb-10 font-normal">
-                NPI Programming Club is more than just a code-hub—it's a vibrant ecosystem where <span className="text-[#0C2C55] font-bold underline decoration-[#629FAD]/30 decoration-4 underline-offset-4">innovation meets execution</span>. 
+                NPI Programming Club is more than just a code-hub—it&apos;s a vibrant ecosystem where <span className="text-[#0C2C55] font-bold underline decoration-[#629FAD]/30 decoration-4 underline-offset-4">innovation meets execution</span>. 
                 Founded on the principles of collaborative excellence, we provide the ultimate launchpad for aspiring developers.
               </motion.p>
 
