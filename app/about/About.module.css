@@ -1,0 +1,70 @@
+.heroGradient {
+  background: radial-gradient(circle at top right, rgba(98, 159, 173, 0.1), transparent),
+              radial-gradient(circle at bottom left, rgba(12, 44, 85, 0.05), transparent);
+}
+
+.glassCard {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+}
+
+.teamCard {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.teamCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(12, 44, 85, 0.1);
+}
+
+.statNumber {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-tertiary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.missionIcon {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(45, 212, 191, 0.1));
+}
+
+.teamGrid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .teamGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.avatarContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+}
+
+.avatarContainer::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.teamCard:hover .avatarContainer::after {
+  opacity: 1;
+  transform: scale(1.05);
+}
