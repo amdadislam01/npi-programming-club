@@ -82,7 +82,7 @@ const ResourcesPage = () => {
   return (
     <main className="min-h-screen bg-neutral-light pb-24">
       {/* Hero Section */}
-      <section className={`pt-24 pb-20 px-6 ${styles.resourceHero}`}>
+      <section className={`pt-16 pb-20 px-6 ${styles.resourceHero}`}>
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -125,7 +125,7 @@ const ResourcesPage = () => {
                 placeholder="Search for roadmap, tool, or guide..." 
                 className="w-full bg-transparent border-none outline-none text-primary font-semibold placeholder:text-neutral-dark/30 py-3"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               />
             </div>
             <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto no-scrollbar px-2">
