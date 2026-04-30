@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Arimo } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const arimo = Arimo({
   subsets: ["latin"],
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   description: "Official club for programming enthusiasts at NPI.",
 };
 
+import { Providers } from "@/components/Providers";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,9 +28,9 @@ export default function RootLayout({
       className={`${arimo.variable} h-full antialiased font-sans`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="flex-1 pt-[80px]">{children}</main>
-        <Footer />
+        <Providers>
+          <LayoutWrapper>{children}</LayoutWrapper>
+        </Providers>
       </body>
     </html>
   );
