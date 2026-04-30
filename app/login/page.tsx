@@ -8,6 +8,9 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const loginSchema = z.object({
   studentId: z.string().min(6, "Student ID must be at least 6 digits"),
@@ -18,6 +21,8 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = React.useState(false);
+  const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
   const { 
     register, 
     handleSubmit, 
@@ -26,9 +31,24 @@ const LoginPage = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log("Login Attempt:", data);
-    alert("Login attempt submitted. Integrating with backend soon!");
+  const onSubmit = async (data: LoginFormData) => {
+    setError(null);
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        studentId: data.studentId,
+        password: data.password,
+      });
+
+      if (result?.error) {
+        setError(result.error);
+      } else {
+        router.push("/dashboard");
+        router.refresh();
+      }
+    } catch (err: any) {
+      setError("An unexpected error occurred");
+    }
   };
 
   return (
@@ -128,6 +148,17 @@ const LoginPage = () => {
                 <h2 className="text-2xl font-black text-primary mb-1">Sign In</h2>
                 <p className="text-sm text-neutral-dark/40 font-medium">Please enter your student credentials.</p>
               </div>
+
+              {error && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-600 text-xs font-bold uppercase tracking-wider"
+                >
+                  <AlertCircle size={16} />
+                  {error}
+                </motion.div>
+              )}
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                 <div className="space-y-1.5">
