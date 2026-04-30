@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Mail, Globe, MapPin, Send, ArrowUpRight, Home, Info, Compass, Calendar, FolderOpen, Newspaper } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
